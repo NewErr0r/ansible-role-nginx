@@ -1,0 +1,17 @@
+galaxy_info:
+  author: NewErr0r
+  description: ansible-role-nginx
+  company: champ.first
+
+  license: BSD
+
+  min_ansible_version: '2.1'
+
+  platforms:
+   - name: Fedora
+     versions:
+       - all
+  
+  galaxy_tags: []
+  
+dependencies: []
