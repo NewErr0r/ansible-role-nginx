@@ -1,4 +1,4 @@
-Role Name
+NGINX
 =========
 
 
@@ -6,24 +6,32 @@ Role Name
 Requirements
 ------------
 
-
+Installing a web server for the Debian family
 
 Role Variables
 --------------
+defaults/main.yaml
+<pre>
+nginx_remove_default: true                          # remove nginx default site
+nginx_template_path: "{{ role_path }}/templates"    # path to nginx site-template
+</pre>
 
-A description of the settable variables for this role should go here, including any variables that are in defaults/main.yml, vars/main.yml, and any variables that can/should be set via parameters to the role. Any variables that are read from other roles and/or the global scope (ie. hostvars, group vars, etc.) should be mentioned here as well.
-
-Dependencies
-------------
+vars/main.yaml
+<pre>
+nginx_system_user: "www-data"
+nginx_sites_enabled_path: /etc/nginx/sites-enabled
+nginx_sites_available_path: /etc/nginx/sites-available
+nginx_default_vhost_path: "{{ nginx_sites_enabled_path }}/default"
+</pre>
 
 Example Playbook
 ----------------
 
-Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:
-
-    - hosts: servers
+    - hosts: web
+      vars: 
+        nginx_remove_default: true|false
       roles:
-         - { role: username.rolename, x: 42 }
+        - ansible-role-nginx
 
 License
 -------
@@ -33,4 +41,4 @@ BSD
 Author Information
 ------------------
 
-An optional section for the role authors to include contact information, or a website (HTML is not allowed).
+NewErr0r
